@@ -1,0 +1,6 @@
+{
+	"pageTitle": "Report dei test effettuati per Ratatouille23Frontend",
+	"outputPath": "test-report/index.html",
+	"includeFailureMsg": true,
+	"logo": "../public/LogoNero.png"
+}

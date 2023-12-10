@@ -1,0 +1,32 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#root {
+    background-color: #F0F0F0;
+    display: flex;
+}
+
+html, body, #root, .app, .content {
+    height: 100%;
+    width: 100%;
+    background-color: #F0F0F0;
+}
+
+.app {
+    display: flex;
+    position: relative;
+}
+
+.content {
+    flex-grow: 1;
+    background-color: #F0F0F0;
+    padding: 20px;
+    height: 100%;
+}
+
+/*::-webkit-scrollbar {
+    width: 0px;
+}*/
+

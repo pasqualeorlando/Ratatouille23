@@ -1,0 +1,39 @@
+version: "3.8"
+services:
+  frontend:
+    container_name: frontend
+    image: frontend
+    build: ./Ratatouille23Frontend/ratatouille23frontend
+    restart: always
+    ports:
+      - "80:80"
+    depends_on:
+      api_service:
+        condition: service_started
+    links:
+      - api_service:api_service
+  api_service:
+    container_name: backend
+    image: backend
+    build: ./Ratatouille23Server
+    restart: always
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgresql_db:
+        condition: service_started
+    links:
+      - postgresql_db:postgresql_db
+  postgresql_db:
+    image: postgres
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ratatouille
+      POSTGRES_USER: ratatouille
+      POSTGRES_PASSWORD: nE5kMc7JCGNqwDQM
+    volumes:
+      #- ./postgres-data:/var/lib/postgresql/data
+      # copy the sql script to create tables
+      - ./Ratatouille23Server/createDatabase.sql:/docker-entrypoint-initdb.d/createDatabase.sql
